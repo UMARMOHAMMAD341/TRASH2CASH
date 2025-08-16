@@ -1,10 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Trash2Cash</title>
+    <title>Trash2Cash </title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Welcome to Trash2Cash</h1>
-    <p>Website coming soon...</p>
+    <style>
+    header, footer {
+        background-color: black;
+        height: 100px;
+        text-align: center;
+        font-size: 15px;
+        color: white;
+        padding: 10px;
+    }
+    header a {
+        margin:15px;
+        color: white;
+        text-decoration: none;
+    }
+    </style>
+
+    <header id="header">
+        <h1 align="center">Trash2Cash</h1>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="#contact">Contact</a>
+    </header>
+
+    <main>
+        <section id="home">
+    <h2>Turn Waste into Rewards </h2>
+    <p>A smart marketplace where recycling earns you rewards and helps the environment.</p>
+    <button>Start Recycling</button>
+  </section>
+        <section id="about">
+            <h2>About the Project</h2>
+            <p>
+                Trash2Cash is a platform where people can give away their recyclable waste and get rewards like points, discounts, or cashback. It makes recycling easy, fun, and rewarding, while also helping to keep our planet clean and green
+            </p>
+            <video controls width="400">
+                <source src="trash2cashvideo.mp4" type="video/mp4">
+                Your browser does not support video.
+            </video><br>
+            <img src="trash2cashlogo.jpg" width="300" alt="Project Logo">
+        </section>
+        <section id="features">
+            <h2>Features</h2>
+            <h3>Waste Collection</h3>
+            <p>Users can list recyclable waste items for pickup.</p>
+
+            <h3>Reward Points</h3>
+            <p>Earn points for every recyclable item exchanged.</p>
+
+            <h3>Analytics</h3>
+            <p>Track how much waste you’ve recycled and rewards earned.</p>
+
+            <img src="project-screenshot.png" width="300" alt="Screenshot">
+        </section>
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <form>
+                <label>Name: <input type="text" name="name" required></label><br>
+                <label>Email: <input type="email" name="email" required></label><br>
+                <label>Message: <textarea name="message" required></textarea></label><br>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        &copy; 2025 Trash2Cash Waste-to-Reward Marketplace
+    </footer>
 </body>
 </html>
