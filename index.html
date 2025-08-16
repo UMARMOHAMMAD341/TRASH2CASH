@@ -1,10 +1,117 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Trash2Cash</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trash to Cash</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to right, #00b09b, #96c93d);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: rgba(0,0,0,0.3);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffeb3b;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        main h2 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        }
+
+        main p {
+            font-size: 1.2em;
+            max-width: 600px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background-color: #ffeb3b;
+            color: #000;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #fdd835;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: rgba(0,0,0,0.3);
+            font-size: 0.9em;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to Trash2Cash</h1>
-    <p>Website coming soon...</p>
+    <header>
+        <h1>Trash to Cash</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Turn Waste Into Wealth</h2>
+        <p>Join our initiative to recycle, reduce, and earn. Transform everyday trash into valuable resources while helping the environment.</p>
+        <a href="about.html" class="btn">Learn More</a>
+    </main>
+
+    <footer>
+        &copy; 2025 Trash to Cash. All rights reserved.
+    </footer>
 </body>
 </html>
