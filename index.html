@@ -10,6 +10,7 @@
       margin: 0;
       padding: 0;
       background: white;
+      overflow-x: hidden; /* Prevent horizontal scroll */
     }
 
     header {
@@ -19,10 +20,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: fixed;   /* Make navbar fixed on top */
+      top: 0;
+      left: 0;
+      width: 98%;
+      z-index: 1000;
     }
     header h1 {
       margin: 0;
-      font-size: 20px;
+      font-size: 28px; /* made header font bigger */
     }
     nav a {
       color: white;
@@ -35,22 +41,24 @@
     }
 
     .hero {
-      background: url("WhatsApp Image 2025-08-18 at 10.39.21_c133820a.jpg") no-repeat center center/cover;
+      background: url("/WhatsApp Image 2025-08-18 at 10.39.21_c133820a.jpg") no-repeat center center/cover;
       color: white;
       text-align: center;
-      padding: 100px 20px;
       position: relative;
-      height: 80vh;
+      height: 50vh;
       display: flex;
       justify-content: center;
       align-items: center;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
     }
     .hero::after {
       content: "";
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.6); /* Dark overlay for text visibility */
     }
     .hero-content {
       position: relative;
@@ -81,7 +89,7 @@
       display: flex;
       justify-content: center;
       gap: 20px;
-      padding: 40px 20px;
+      padding: 40px 20px 60px 20px; /* reduced top gap (was 100px) */
     }
     .card {
       background: white;
@@ -99,12 +107,18 @@
       font-size: 14px;
       color: #555;
     }
+
     footer {
       background: green;
       color: white;
       text-align: center;
       padding: 15px;
       margin-top: 40px;
+    }
+
+    /* To avoid hero text hiding behind navbar */
+    .spacer {
+      height: 70px;
     }
   </style>
 </head>
@@ -119,11 +133,13 @@
     </nav>
   </header>
 
+  <div class="spacer"></div> <!-- Push hero below navbar -->
+
   <section class="hero">
     <div class="hero-content">
       <h2>Welcome to Trash2Cash</h2>
       <p>Exchange your waste, earn rewards, and contribute to a cleaner planet.</p>
-      <button>Get Started</button>
+      <button>START RECYCLE</button>
     </div>
   </section>
 
