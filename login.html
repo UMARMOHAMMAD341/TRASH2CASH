@@ -1,23 +1,85 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Trash 2 Cash</title>
-    <link rel="stylesheet" href="login.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Trash2Cash — Login</title>
+
+  <!-- Tailwind CDN for speed + Inter Font -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://rsms.me/inter/inter.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="bg-gradient-to-tr from-[#0b1220] via-[#0f172a] to-[#071028] min-h-screen flex items-center justify-center">
+  <div class="container px-4">
+    <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 items-center">
+      <!-- Left: marketing/3D visual -->
+      <div class="hidden md:flex flex-col gap-6">
+        <div class="glass-3d p-6 rounded-2xl tilt" data-tilt>
+          <div class="flex items-center gap-3">
+            <div class="logo-3d">T2</div>
+            <div>
+              <h1 class="text-2xl font-extrabold text-white">Trash2Cash</h1>
+              <p class="text-sm text-slate-300">Realtime demo · polished UI · 3D depth</p>
+            </div>
+          </div>
 
-    <div class="login-container">
-        <form id="loginForm">
-            <h2>Trash 2 Cash Login</h2>
-            <input type="email" id="email" placeholder="Enter your email" required>
-            <input type="password" id="password" placeholder="Enter your password" required>
-            <button type="submit">Login</button>
-            <p id="error-msg"></p>
-        </form>
+          <div class="mt-6">
+            <h2 class="text-xl font-bold text-white">Make waste valuable</h2>
+            <p class="text-slate-300 mt-2">Request pickups, earn EcoPoints and view your dashboard — feel like a modern app with depth and motion.</p>
+          </div>
+
+          <div class="mt-6 grid grid-cols-2 gap-4">
+            <div class="mini-card">
+              <div class="stat">+120</div>
+              <div class="label">EcoPoints</div>
+            </div>
+            <div class="mini-card">
+              <div class="stat">18</div>
+              <div class="label">Pickups</div>
+            </div>
+          </div>
+        </div>
+        <div class="text-slate-400 text-sm">Tip: Use <strong>demo@trash2cash.test</strong> and any password to test quick flow (demo account seeded).</div>
+      </div>
+
+      <!-- Right: Login Form -->
+      <div class="tilt" data-tilt>
+        <div class="glass-card p-8 rounded-2xl shadow-xl">
+          <h3 class="text-2xl font-bold text-white mb-1">Welcome back</h3>
+          <p class="text-slate-300 mb-6">Sign in to access your Trash2Cash dashboard</p>
+
+          <form id="loginForm" class="space-y-4">
+            <label class="block text-slate-300 text-sm">Email</label>
+            <input id="email" type="email" placeholder="you@example.com" required class="input-3d">
+
+            <label class="block text-slate-300 text-sm">Password</label>
+            <input id="password" type="password" placeholder="Enter password" required class="input-3d">
+
+            <div class="flex items-center justify-between text-xs text-slate-400">
+              <label class="flex items-center gap-2"><input type="checkbox" id="remember"> Remember</label>
+              <a href="register.html" class="text-sky-300">Create account</a>
+            </div>
+
+            <button type="submit" class="btn-3d w-full mt-3">Sign In</button>
+
+            <div class="text-center mt-3">
+              <span class="text-xs text-slate-400">or continue with</span>
+              <div class="flex gap-3 justify-center mt-3">
+                <button type="button" class="social-btn">G</button>
+                <button type="button" class="social-btn">f</button>
+                <button type="button" class="social-btn">in</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
     </div>
+  </div>
 
-    <script src="login.js"></script>
+  <script src="main.js" defer></script>
+  <script src="auth.js" defer></script>
 </body>
 </html>

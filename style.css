@@ -1,84 +1,68 @@
-/* General Styles */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+/* style.css - 3D glass / modern vibe */
+:root{
+  --primary:#7ee787;
+  --card-bg: rgba(255,255,255,0.03);
+  --glass: rgba(255,255,255,0.04);
+  --accent: rgba(34,197,94,0.12);
+  --glass-border: rgba(255,255,255,0.06);
 }
 
-/* Header */
-header {
-    background-color: #2c3e50;
-    color: white;
-    text-align: center;
-    padding: 20px;
+/* common */
+body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+input,button{font-family:inherit}
+
+/* glass card */
+.glass-card{
+  background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(8px) saturate(120%);
+  box-shadow: 0 10px 30px rgba(2,6,23,0.7);
 }
 
-/* Navigation */
-nav {
-    background-color: #34495e;
-    text-align: center;
-    padding: 10px;
-}
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-nav a:hover {
-    color: #f1c40f;
+/* 3D left visual */
+.glass-3d{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border:1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 18px 40px rgba(2,6,23,0.6);
 }
 
-/* Hero Section with Better Background Fit */
-.hero {
-    background: url('WhatsApp Image 2025-08-18 at 10.39.20_45c3ea36.jpg') no-repeat center center;
-    background-size: cover;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+/* logo 3D */
+.logo-3d{
+  width:56px;height:56px;border-radius:14px;background:linear-gradient(145deg,#0ea5a5,#7ee787);display:flex;align-items:center;justify-content:center;font-weight:800;color:#042;box-shadow: 0 8px 20px rgba(16,185,129,0.16), inset 0 -6px 14px rgba(0,0,0,0.15);
 }
+.logo-3d-small{width:44px;height:44px;border-radius:10px;background:linear-gradient(145deg,#0ea5a5,#7ee787);display:flex;align-items:center;justify-content:center;font-weight:700;color:#042;box-shadow:0 6px 16px rgba(16,185,129,0.12)}
 
-/* Overlay for readability */
-.hero::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.4); /* semi-transparent dark overlay */
-}
+/* small stat card */
+.mini-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:12px;border-radius:12px; border:1px solid rgba(255,255,255,0.03)}
+.mini-card .stat{font-weight:700;font-size:18px;color:var(--primary)}
+.mini-card .label{font-size:12px;color:#b9c0c7}
 
-/* Hero text on top of overlay */
-.hero-text {
-    position: relative;
-    color: white;
-    text-align: center;
-    z-index: 1;
-    max-width: 90%;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 12px;
-    font-size: 2em;
-    font-weight: bold;
-}
+/* inputs & buttons */
+.input-3d{width:100%;padding:12px;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);color:#e6eef6;outline:none}
+.input-3d:focus{box-shadow:0 6px 18px rgba(14,165,233,0.06);border-color:rgba(34,197,94,0.8)}
+.btn-3d{background:linear-gradient(90deg,#22c55e,#16a34a);color:white;padding:12px;border-radius:12px;border:none;font-weight:700;box-shadow: 0 12px 30px rgba(16,185,129,0.16)}
+.btn-3d:hover{transform:translateY(-3px);transition:transform .18s ease}
 
-/* Content Sections */
-.content {
-    padding: 40px;
-    text-align: center;
-}
-.content h2 {
-    color: #2c3e50;
-}
+/* social / small buttons */
+.social-btn{width:40px;height:40px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.02);color:#fff;font-weight:600}
 
-/* Footer */
-footer {
-    background-color: #2c3e50;
-    color: white;
-    text-align: center;
-    padding: 20px 0;
+/* nav & topbar */
+.glass-top{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-bottom:1px solid rgba(255,255,255,0.03);backdrop-filter: blur(6px);box-shadow:0 6px 24px rgba(2,6,23,0.6)}
+.nav-link{color:#9fb3b0;padding:6px 10px;border-radius:8px}
+.nav-link.active{background:rgba(34,197,94,0.08);color:var(--primary);font-weight:600}
+
+/* cards on dashboard */
+.card-3d{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);box-shadow: 0 12px 30px rgba(0,0,0,0.5)}
+.search-3d{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);padding:12px;border-radius:12px;color:#dbeafe}
+
+/* small ghost buttons grid */
+.btn-ghost{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);padding:10px;border-radius:10px;color:#dbeafe;box-shadow:0 10px 24px rgba(0,0,0,0.45);font-weight:600}
+
+/* tilt base */
+.tilt{transform-style:preserve-3d;transition:transform .12s ease}
+
+/* responsive */
+@media (max-width:768px){
+  .logo-3d{display:none}
+  .mini-card{display:none}
 }

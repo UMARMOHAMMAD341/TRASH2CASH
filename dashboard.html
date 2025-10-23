@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Trash2Cash — Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://rsms.me/inter/inter.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#071028] text-slate-100 min-h-screen">
+  <header class="glass-top sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="logo-3d-small">T2</div>
+        <div class="text-white font-semibold">Trash2Cash</div>
+      </div>
+      <nav class="flex items-center gap-4">
+        <a href="dashboard.html" class="nav-link active">Dashboard</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="login.html" id="logoutLink" class="nav-link">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 py-8">
+    <div class="flex items-center justify-between">
+      <h2 class="text-3xl font-bold">Dashboard</h2>
+      <div class="text-sm text-slate-300">Hello, <strong id="dashUser">—</strong></div>
+    </div>
+
+    <div class="grid md:grid-cols-4 gap-6 mt-6">
+      <div class="card-3d">
+        <div class="text-sm text-slate-400">EcoPoints</div>
+        <div class="text-2xl font-bold" id="ecoPoints">0</div>
+      </div>
+      <div class="card-3d">
+        <div class="text-sm text-slate-400">Completed Pickups</div>
+        <div class="text-2xl font-bold" id="completedPickups">0</div>
+      </div>
+      <div class="card-3d">
+        <div class="text-sm text-slate-400">Pending Pickups</div>
+        <div class="text-2xl font-bold" id="pendingPickups">0</div>
+      </div>
+      <div class="card-3d">
+        <div class="text-sm text-slate-400">Uploaded Items</div>
+        <div class="text-2xl font-bold" id="uploadedItems">0</div>
+      </div>
+    </div>
+
+    <div class="mt-6 grid md:grid-cols-2 gap-6">
+      <div class="bg-[#071426] p-6 rounded-xl shadow-xl">
+        <h3 class="font-semibold text-slate-100">EcoPoints over time</h3>
+        <canvas id="ecoChart" height="140" class="mt-4"></canvas>
+      </div>
+
+      <div class="bg-[#071426] p-6 rounded-xl shadow-xl">
+        <h3 class="font-semibold text-slate-100">Recent activity</h3>
+        <ul id="activityList" class="mt-4 space-y-3 text-sm text-slate-300"></ul>
+      </div>
+    </div>
+
+    <div class="mt-6 grid md:grid-cols-4 gap-3">
+      <!-- many buttons you had previously (kept) -->
+      <button class="btn-ghost" onclick="uploadItem()">Upload Waste Item</button>
+      <button class="btn-ghost" onclick="requestPickupDemo()">Request Pickup</button>
+      <button class="btn-ghost" onclick="completePickupDemo()">Complete Pickup</button>
+      <button class="btn-ghost" onclick="redeemRewards()">Redeem Rewards</button>
+      <button class="btn-ghost" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+      <button class="btn-ghost" onclick="downloadCSV()">Download CSV</button>
+      <button class="btn-ghost" onclick="uploadCSV()">Upload CSV</button>
+      <button class="btn-ghost" onclick="showNotifications()">Show Notifications</button>
+      <button class="btn-ghost" onclick="editProfile()">Edit Profile</button>
+      <button class="btn-ghost" onclick="resetPassword()">Reset Password</button>
+      <button class="btn-ghost" onclick="searchServices()">Search Services</button>
+      <button class="btn-ghost" onclick="addService()">Add Service</button>
+      <button class="btn-ghost" onclick="removeService()">Remove Service</button>
+      <button class="btn-ghost" onclick="togglePickupStatus()">Toggle Pickup Status</button>
+      <button class="btn-ghost" onclick="showFAQ()">Show FAQ</button>
+      <button class="btn-ghost" onclick="showActivity()">Recent Activity</button>
+      <button class="btn-ghost" onclick="showChart()">Show Chart</button>
+      <button class="btn-ghost" onclick="clearUploads()">Clear Uploads</button>
+      <button class="btn-ghost" onclick="clearPickups()">Clear Pickups</button>
+      <button class="btn-ghost" onclick="refreshDashboard()">Refresh Dashboard</button>
+    </div>
+
+  </main>
+
+  <script src="main.js" defer></script>
+  <script src="mockdata.js" defer></script>
+  <script src="dashboard.js" defer></script>
+  <script src="auth.js" defer></script>
+</body>
+</html>

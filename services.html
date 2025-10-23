@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Trash2Cash — Services</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://rsms.me/inter/inter.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#071028] text-slate-100 min-h-screen">
+  <!-- topbar -->
+  <header class="glass-top sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="logo-3d-small">T2</div>
+        <div class="text-white font-semibold">Trash2Cash</div>
+      </div>
+      <nav class="flex items-center gap-4">
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+        <a href="services.html" class="nav-link active">Services</a>
+        <a href="login.html" id="logoutLink" class="nav-link">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 py-10">
+    <h1 class="text-3xl font-bold mb-3">Services Marketplace</h1>
+    <p class="text-slate-300 mb-6">Search services and request pickups. Earn EcoPoints instantly when pickups complete.</p>
+
+    <div class="flex gap-3 mb-6">
+      <input id="serviceSearch" class="search-3d flex-1" placeholder="Search Plastic, E-waste, Metal...">
+      <button id="searchBtn" class="btn-3d">Search</button>
+    </div>
+
+    <div id="servicesContainer" class="grid md:grid-cols-3 gap-6"></div>
+  </main>
+
+  <script src="main.js" defer></script>
+  <script src="mockdata.js" defer></script>
+  <script src="services.js" defer></script>
+  <script src="auth.js" defer></script>
+</body>
+</html>

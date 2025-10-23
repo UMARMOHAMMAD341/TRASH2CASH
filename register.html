@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Trash2Cash — Register</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://rsms.me/inter/inter.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-to-tr from-[#0b1220] via-[#0f172a] to-[#071028] min-h-screen flex items-center justify-center">
+  <div class="max-w-md w-full p-6">
+    <div class="glass-card p-8 rounded-2xl shadow-xl tilt" data-tilt>
+      <h2 class="text-2xl text-white font-bold">Create your Trash2Cash account</h2>
+      <p class="text-slate-300 text-sm mt-2">Join and start earning EcoPoints.</p>
+
+      <form id="registerForm" class="mt-6 space-y-4">
+        <label class="text-slate-300">Full name</label>
+        <input id="fullname" class="input-3d" required>
+
+        <label class="text-slate-300">Email</label>
+        <input id="regEmail" type="email" class="input-3d" required>
+
+        <label class="text-slate-300">Password</label>
+        <input id="regPassword" type="password" class="input-3d" required placeholder="6+ characters">
+
+        <button type="submit" class="btn-3d w-full">Create Account</button>
+        <p class="text-center text-slate-400 text-xs mt-2">Already have an account? <a href="login.html" class="text-sky-300">Sign in</a></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="main.js" defer></script>
+  <script src="auth.js" defer></script>
+</body>
+</html>
