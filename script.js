@@ -1,12 +1,15 @@
-/* script.js - Frontend app for TrashToCash (localStorage + Backend Hybrid)
+/* script.js - Frontend app for TrashToCash (LocalStorage + Backend Hybrid)
    Features:
    - LocalStorage fallback for offline.
    - Auto-sync listings, purchases, wallets with backend.
    - Works for both Buyer and Seller dashboards.
-   - Backend: http://localhost:5000 (Express + MySQL)
+   - Auto-detects backend (localhost or Render).
 */
 
-const API_BASE = "http://localhost:5000";
+// 🔧 Dynamic API base (works locally and on Render)
+const API_BASE = window.location.hostname.includes("localhost")
+  ? "http://localhost:5000"
+  : window.location.origin;
 
 // small helpers
 const _get = (k)=> JSON.parse(localStorage.getItem(k) || '[]');
@@ -14,6 +17,12 @@ const _set = (k,v)=> localStorage.setItem(k, JSON.stringify(v));
 const _getObj = (k)=> JSON.parse(localStorage.getItem(k) || '{}');
 const _setObj = (k,v)=> localStorage.setItem(k, JSON.stringify(v));
 function showMsg(el, txt, color){ if(!el) return; el.textContent = txt; el.style.color = color || ''; }
+
+// 🧱 Initialize all required localStorage keys
+["users","wasteListings","transactions","contacts"].forEach(k=>{
+  if(localStorage.getItem(k)===null) localStorage.setItem(k,"[]");
+});
+if(localStorage.getItem("wallets")===null) localStorage.setItem("wallets","{}");
 
 // Auto-redirect if logged in
 (function(){
@@ -82,10 +91,9 @@ document.addEventListener('click', e=>{
   const file = location.pathname.split('/').pop();
   const protectedPages = ['role.html','seller-dashboard.html','buyer-dashboard.html','contact.html','project.html','about.html','how.html'];
   if(!localStorage.getItem('loggedUser') && protectedPages.includes(file)){
-    if(file !== 'login.html' && file !== 'signup.html' && file !== 'index.html') location.href = 'login.html';
+    location.href = 'login.html';
   }
 })();
-
 
 // ================= SELLER DASHBOARD =================
 if(document.getElementById('wasteForm') || document.getElementById('addListing')){
@@ -108,6 +116,7 @@ if(document.getElementById('wasteForm') || document.getElementById('addListing')
   const addBtn = document.getElementById('addListing');
   const viewMyBtn = document.getElementById('viewMy');
   const clearAllBtn = document.getElementById('clearAll');
+  const syncMsg = document.getElementById('syncStatus');
 
   async function renderMyListings(){
     const all = _get('wasteListings');
@@ -144,11 +153,12 @@ if(document.getElementById('wasteForm') || document.getElementById('addListing')
 
       // sync with backend
       try {
-        await fetch(`${API_BASE}/api/listings`, {
+        if(syncMsg) syncMsg.textContent = "🔄 Syncing with server...";
+        const res = await fetch(`${API_BASE}/api/listings`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            seller_id: 1, // static demo
+            seller_id: 1,
             waste_type: type,
             weight,
             price_per_kg: price,
@@ -156,7 +166,9 @@ if(document.getElementById('wasteForm') || document.getElementById('addListing')
             location: loc
           })
         });
-      } catch(e){ console.warn("Offline mode: Listing stored locally"); }
+        if(res.ok){ if(syncMsg) syncMsg.textContent = "✅ Synced successfully"; }
+        else { if(syncMsg) syncMsg.textContent = "⚠️ Sync failed"; }
+      } catch(e){ if(syncMsg) syncMsg.textContent = "Offline mode: stored locally"; }
     });
   }
 
@@ -176,7 +188,6 @@ if(document.getElementById('wasteForm') || document.getElementById('addListing')
     if(sellerBalanceEl) sellerBalanceEl.textContent = (ws[sellerName]||0).toFixed(2);
   }, 1000);
 }
-
 
 // ================= BUYER DASHBOARD =================
 if(document.getElementById('marketList') || document.getElementById('applyFilter')){
@@ -198,8 +209,8 @@ if(document.getElementById('marketList') || document.getElementById('applyFilter
 
     const t = (filterType && filterType.value) || 'All';
     const loc = (filterLocation && filterLocation.value || '').trim().toLowerCase();
-    if(t && t !== 'All') all = all.filter(i=> i.type === t);
-    if(loc) all = all.filter(i=> i.location.toLowerCase().includes(loc));
+    if(t && t !== 'All') all = all.filter(i=> (i.type||i.waste_type) === t);
+    if(loc) all = all.filter(i=> (i.location||'').toLowerCase().includes(loc));
     if(!marketList) return;
     if(!all.length){ marketList.innerHTML = '<p class="muted">No listings available.</p>'; return; }
 
@@ -259,7 +270,7 @@ if(document.getElementById('marketList') || document.getElementById('applyFilter
   if(viewPurchases) viewPurchases.addEventListener('click', ()=>{ renderBuyerTx(); window.scrollTo({ top: buyerTxDiv.getBoundingClientRect().top + window.scrollY - 80, behavior:'smooth' }); });
 
   renderMarket(); renderBuyerTx();
-  setInterval(renderMarket,2000);
+  setInterval(renderMarket,5000);
 }
 
 // CONTACT FORM
