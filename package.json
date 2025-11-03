@@ -1,7 +1,7 @@
 {
   "name": "trash2cash",
   "version": "1.0.0",
-  "description": "",
+  "description": "Trash2Cash backend server",
   "main": "script.js",
   "dependencies": {
     "accepts": "^2.0.0",
@@ -83,14 +83,14 @@
     "wrappy": "^1.0.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node script.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/UMARMOHAMMAD341/TRASH2CASH.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Umar Mohammad",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/UMARMOHAMMAD341/TRASH2CASH/issues"
