@@ -3,14 +3,37 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Trash2Cash — Loading</title>
-  <meta http-equiv="refresh" content="0; url=login.html">
-  <style>body{font-family:Inter,system-ui,Arial,sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;background:#0f172a;color:#fff} .box{display:flex;flex-direction:column;align-items:center;gap:12px}</style>
+  <title>TrashToCash — Loading</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
 </head>
-<body>
-  <div class="box">
-    <div style="font-size:20px;font-weight:700">Redirecting to Login…</div>
-    <div style="opacity:0.8">If not redirected, <a href="login.html" style="color:#7ee787">click here</a></div>
+<body class="loading-body">
+  <div class="loader-card">
+    <div class="loader-logo">
+      <div class="logo-mark"><i class="fa-solid fa-recycle"></i></div>
+      <div class="loader-title">TrashToCash</div>
+    </div>
+    <div class="loader-progress" id="loaderProgress">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="loader-text" id="loaderText">Preparing application — 0%</div>
+    <div class="loader-sub">Loading minimal UI…</div>
   </div>
+
+  <script>
+    // animate progress to 100% then go to login
+    (function(){
+      let pct = 0;
+      const bar = document.getElementById('progressBar');
+      const txt = document.getElementById('loaderText');
+      const interval = setInterval(()=>{
+        pct += 5;
+        if(pct>100) pct=100;
+        bar.style.width = pct + '%';
+        txt.textContent = 'Preparing application — ' + pct + '%';
+        if(pct>=100){ clearInterval(interval); setTimeout(()=> location.href='login.html', 500); }
+      }, 80);
+    })();
+  </script>
 </body>
 </html>

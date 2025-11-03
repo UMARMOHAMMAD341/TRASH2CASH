@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Buyer Dashboard — TrashToCash</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+</head>
+<body>
+  <header class="main-header">
+    <div class="header-left">
+      <div class="logo-mark"><i class="fa-solid fa-recycle"></i></div>
+      <div>
+        <div class="brand">TrashToCash</div>
+        <div class="tag">Buyer Dashboard</div>
+      </div>
+    </div>
+    <nav class="top-nav">
+      <a href="how.html">How</a>
+      <a href="about.html">About</a>
+      <a href="project.html">Project</a>
+      <a href="contact.html">Contact</a>
+      <button id="logoutBtn" class="btn small"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+    </nav>
+  </header>
+
+  <main class="container" style="padding-top:100px;">
+
+    <!-- ✨ New Feature: Welcome + Wallet + Badges -->
+    <section class="panel" style="text-align:center;">
+      <h2>Welcome back, <span id="buyerName">Lokesh</span> 👋</h2>
+      <div class="wallet">Wallet Balance: ₹<span id="walletBalance">1250</span></div>
+
+      <div class="badges-section" id="userBadges" style="margin-top:16px;">
+        <div class="badge gold"><i class="fa-solid fa-crown"></i> Top Recycler</div>
+        <div class="badge silver"><i class="fa-solid fa-leaf"></i> Eco Hero</div>
+        <div class="badge bronze"><i class="fa-solid fa-recycle"></i> Green Starter</div>
+      </div>
+    </section>
+
+    <!-- Filter Listings -->
+    <section class="panel">
+      <h3><i class="fa-solid fa-filter"></i> Filter Listings</h3>
+      <div class="grid-form" style="max-width:720px;">
+        <select id="filterType">
+          <option value="All">All types</option>
+          <option>Plastic</option>
+          <option>Iron</option>
+          <option>Paper</option>
+          <option>Glass</option>
+          <option>E-Waste</option>
+          <option>Textile</option>
+        </select>
+        <input id="filterLocation" type="text" placeholder="Location (city/area)">
+        <div style="display:flex;gap:8px;">
+          <button id="applyFilter" class="btn small"><i class="fa-solid fa-magnifying-glass"></i> Apply</button>
+          <button id="clearFilter" class="btn small outline"><i class="fa-solid fa-broom"></i> Clear</button>
+          <button id="viewPurchases" class="btn small outline"><i class="fa-solid fa-receipt"></i> My Purchases</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Marketplace Section -->
+    <section class="panel">
+      <h3><i class="fa-solid fa-shop"></i> Marketplace</h3>
+      <div id="marketList" class="grid-grid"></div>
+    </section>
+
+    <!-- ✨ New Feature: Trending Materials -->
+    <section class="panel">
+      <h3><i class="fa-solid fa-fire"></i> Trending Materials</h3>
+      <ul class="project-list">
+        <li><i class="fa-solid fa-bottle-water"></i> Recycled Plastic Bottles up by 15%</li>
+        <li><i class="fa-solid fa-newspaper"></i> Old Newspapers in High Demand</li>
+        <li><i class="fa-solid fa-tv"></i> E-waste Demand Rising</li>
+      </ul>
+    </section>
+
+    <!-- My Purchases -->
+    <section class="panel">
+      <h3><i class="fa-solid fa-history"></i> My Purchases</h3>
+      <div id="buyerTx" class="grid-grid"></div>
+    </section>
+
+    <!-- ✨ New Feature: Feedback Section -->
+    <section class="panel">
+      <h3><i class="fa-solid fa-comment-dots"></i> Share Feedback</h3>
+      <form class="grid-form" style="max-width:700px;">
+        <input type="text" id="feedbackName" placeholder="Your Name">
+        <textarea id="feedbackMsg" rows="3" placeholder="Your feedback helps us improve..."></textarea>
+        <button type="button" id="submitFeedback" class="btn"><i class="fa-solid fa-paper-plane"></i> Submit</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">© 2025 TrashToCash — Turning Waste Into Worth ♻️</footer>
+
+  <script src="script.js"></script>
+  <script>
+    // ✨ Demo data for wallet + badges
+    document.getElementById('buyerName').textContent = 'Lokesh';
+    document.getElementById('walletBalance').textContent = '1250';
+
+    // Feedback handler (temporary demo)
+    document.getElementById('submitFeedback').addEventListener('click', ()=>{
+      const msg = document.getElementById('feedbackMsg').value.trim();
+      if(msg){
+        alert('Thank you for your feedback, Lokesh! 💚');
+        document.getElementById('feedbackMsg').value = '';
+      }
+    });
+  </script>
+</body>
+</html>

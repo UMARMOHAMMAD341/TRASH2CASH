@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Choose Role — TrashToCash</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+</head>
+<body class="auth-body">
+  <div class="auth-card">
+    <div class="logo-circle"><i class="fa-solid fa-recycle"></i></div>
+    <h1>Choose Role</h1>
+    <p class="muted">How will you use TrashToCash today?</p>
+
+    <div style="display:flex;gap:12px;flex-direction:column;margin-top:12px;">
+      <button id="roleSeller" class="btn large"><i class="fa-solid fa-store"></i> I'm a Seller</button>
+      <button id="roleBuyer" class="btn outline large"><i class="fa-solid fa-cart-shopping"></i> I'm a Buyer</button>
+    </div>
+    <div style="margin-top:12px"><a href="login.html" class="muted">Back to Login</a></div>
+  </div>
+
+  <script>
+    // choose role and redirect
+    document.getElementById('roleSeller').addEventListener('click', ()=> {
+      localStorage.setItem('userRole','seller'); location.href='seller-dashboard.html';
+    });
+    document.getElementById('roleBuyer').addEventListener('click', ()=> {
+      localStorage.setItem('userRole','buyer'); location.href='buyer-dashboard.html';
+    });
+  </script>
+</body>
+</html>

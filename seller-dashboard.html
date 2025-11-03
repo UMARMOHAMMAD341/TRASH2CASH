@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Seller Dashboard — TrashToCash</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+</head>
+<body>
+  <header class="main-header">
+    <div class="header-left">
+      <div class="logo-mark"><i class="fa-solid fa-recycle"></i></div>
+      <div>
+        <div class="brand">TrashToCash</div>
+        <div class="tag">Seller Dashboard</div>
+      </div>
+    </div>
+    <nav class="top-nav">
+      <a href="how.html">How</a>
+      <a href="about.html">About</a>
+      <a href="project.html">Project</a>
+      <a href="contact.html">Contact</a>
+      <button id="logoutBtn" class="btn small"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+    </nav>
+  </header>
+
+  <main class="container" style="padding-top:100px;">
+
+    <!-- ✨ New Feature: Seller Profile & Reward Section -->
+    <section class="panel" style="text-align:center;">
+      <h2>Welcome, <span id="sellerName">Lokesh</span> 👋</h2>
+      <p class="muted">Manage your waste listings and track your rewards easily.</p>
+      <div class="wallet">Wallet Balance: ₹<span id="sellerBalance">850.00</span></div>
+
+      <div class="badges-section" id="sellerBadges" style="margin-top:16px;">
+        <div class="badge gold"><i class="fa-solid fa-star"></i> Premium Seller</div>
+        <div class="badge silver"><i class="fa-solid fa-handshake"></i> Trusted Partner</div>
+        <div class="badge bronze"><i class="fa-solid fa-leaf"></i> Eco Contributor</div>
+      </div>
+    </section>
+
+    <!-- Waste Listing Form -->
+    <section class="panel">
+      <h3><i class="fa-solid fa-plus-circle"></i> Add Waste Item</h3>
+      <form id="wasteForm" class="grid-form">
+        <select id="wasteType" required>
+          <option value="">Select waste type</option>
+          <option>Plastic</option>
+          <option>Iron</option>
+          <option>Paper</option>
+          <option>Glass</option>
+          <option>E-Waste</option>
+          <option>Textile</option>
+        </select>
+
+        <input id="wasteWeight" type="number" step="0.1" placeholder="Weight (kg)" required>
+        <input id="pricePerKg" type="number" step="0.01" placeholder="Price (₹ per kg)" required>
+        <input id="totalCost" type="text" placeholder="Total cost (auto)" readonly>
+        <input id="location" type="text" placeholder="Location (city/area)" required>
+      </form>
+
+      <div style="display:flex;gap:10px;margin-top:10px;">
+        <button class="btn" id="addListing"><i class="fa-solid fa-plus"></i> Add Listing</button>
+        <button class="btn outline" id="viewMy"><i class="fa-solid fa-eye"></i> View My Listings</button>
+        <button class="btn danger" id="clearAll"><i class="fa-solid fa-trash"></i> Clear My Listings</button>
+      </div>
+    </section>
+
+    <!-- ✨ New Feature: Active Listings Summary -->
+    <section class="panel">
+      <h3><i class="fa-solid fa-chart-line"></i> Active Listings Overview</h3>
+      <div class="grid-grid">
+        <div class="entry">
+          <div class="title"><i class="fa-solid fa-boxes-stacked"></i> Total Listings</div>
+          <div class="price">12</div>
+        </div>
+        <div class="entry">
+          <div class="title"><i class="fa-solid fa-money-bill-wave"></i> Total Value</div>
+          <div class="price">₹8,520</div>
+        </div>
+        <div class="entry">
+          <div class="title"><i class="fa-solid fa-hand-holding-heart"></i> Successful Sales</div>
+          <div class="price">8</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- My Listings -->
+    <section class="panel">
+      <h3><i class="fa-solid fa-list"></i> My Listings</h3>
+      <div id="wasteGrid" class="grid-grid"></div>
+    </section>
+
+    <!-- ✨ New Feature: Seller Tips -->
+    <section class="panel">
+      <h3><i class="fa-solid fa-lightbulb"></i> Seller Tips</h3>
+      <ul class="project-list">
+        <li><i class="fa-solid fa-recycle"></i> Keep waste items clean and sorted before listing.</li>
+        <li><i class="fa-solid fa-tag"></i> Set competitive prices for faster sales.</li>
+        <li><i class="fa-solid fa-comments"></i> Respond quickly to buyer inquiries.</li>
+      </ul>
+    </section>
+
+    <!-- ✨ New Feature: Feedback -->
+    <section class="panel">
+      <h3><i class="fa-solid fa-comment-dots"></i> Share Your Feedback</h3>
+      <form class="grid-form" style="max-width:700px;">
+        <input type="text" id="feedbackName" placeholder="Your Name">
+        <textarea id="feedbackMsg" rows="3" placeholder="Tell us how we can improve..."></textarea>
+        <button type="button" id="submitFeedback" class="btn"><i class="fa-solid fa-paper-plane"></i> Submit</button>
+      </form>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">© 2025 TrashToCash — Empowering Sustainable Sellers ♻️</footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Live total calculation for seller
+    (function(){
+      const w=document.getElementById('wasteWeight'),
+            p=document.getElementById('pricePerKg'),
+            t=document.getElementById('totalCost');
+      function updateTotal(){
+        const v=(parseFloat(w.value||0)*parseFloat(p.value||0));
+        t.value = v>0 ? '₹'+v.toFixed(2) : '';
+      }
+      w && w.addEventListener('input', updateTotal);
+      p && p.addEventListener('input', updateTotal);
+    })();
+
+    // ✨ Feedback handler (temporary demo)
+    document.getElementById('submitFeedback').addEventListener('click', ()=>{
+      const msg=document.getElementById('feedbackMsg').value.trim();
+      if(msg){
+        alert('Thank you for your feedback, Lokesh! 💚');
+        document.getElementById('feedbackMsg').value='';
+      }
+    });
+  </script>
+</body>
+</html>
