@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Trash2Cash backend server",
   "main": "script.js",
+  "type": "module",
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "dependencies": {
     "accepts": "^2.0.0",
     "bignumber.js": "^9.0.0",
@@ -83,13 +87,14 @@
     "wrappy": "^1.0.2"
   },
   "scripts": {
-    "start": "node script.js"
+    "start": "node script.js",
+    "build": "echo 'No build step required'"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/UMARMOHAMMAD341/TRASH2CASH.git"
   },
-  "keywords": [],
+  "keywords": ["express", "backend", "trash2cash"],
   "author": "Umar Mohammad",
   "license": "ISC",
   "bugs": {
